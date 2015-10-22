@@ -24,7 +24,9 @@ public class MergeSort_Sequential {
     public static void mergeSort_Sequential(int a[ ]){
         int tmpArray[] = new int[a.length];
         System.out.println(Arrays.toString(a));
+        long startup = System.nanoTime();
         mergeSort(a,tmpArray, 0, a.length - 1);
+        System.out.println("This took " + stopWatch(startup) + " seconds.");
         System.out.println(Arrays.toString(tmpArray));
     }
     
@@ -58,6 +60,13 @@ public class MergeSort_Sequential {
         for (int i = 0; i < numElements; i ++, rightEnd--){ //Copy TmpArray back
             a[rightEnd] = tmpArray[rightEnd];
         }
+    }
+    
+    public static double stopWatch(long startTime) {
+	double elapsedTime = 0.0;
+	elapsedTime = System.nanoTime()-startTime;
+
+	return (double)elapsedTime / 1000000000.0;
     }
 }
     
